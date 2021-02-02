@@ -25,5 +25,10 @@ class Test < Minitest::Test
   def test_it_can_have_high_ranking_cards
     assert_equal [@card1, @card3], @deck.high_ranking_cards
   end
- 
+
+  def test_it_has_percent_high_ranking
+    assert_equal @cards, @deck.cards
+    assert_equal [@card1, @card3], @deck.high_ranking_cards
+    assert_equal 66.67, @deck.percent_high_ranking  
+  end
 end
