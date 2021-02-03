@@ -22,5 +22,20 @@ class PlayerTest < Minitest::Test
 
     def test_it_has_lost?
       assert_equal false, @player.has_lost?
+
+      @player.deck.remove_card(:diamond, "Queen", 12)
+      assert_equal 2, @deck.length()
+      assert_equal false, @player.has_lost?
+
+      @player.deck.remove_card(:spade, "3", 3)
+      assert_equal 1, @deck.length()
+ 
+      assert_equal false, @player.has_lost?
+
+      @player.deck.remove_card(:heart, "Ace", 14)
+
+      assert_equal true, @player.has_lost?
+      assert_equal [], @player.deck
+
     end
 end

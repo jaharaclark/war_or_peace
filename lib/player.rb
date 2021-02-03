@@ -1,3 +1,4 @@
+require 'pry'
 class Player
   attr_reader :name, :deck 
   
@@ -7,6 +8,11 @@ class Player
   end
 
   def has_lost?
-    return false
+    # require 'pry'; binding.pry
+    if @deck == []
+      return true
+    else
+      return false
+    end
   end
 end
