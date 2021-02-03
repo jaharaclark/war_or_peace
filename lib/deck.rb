@@ -1,5 +1,5 @@
 class Deck
-  attr_reader :cards
+  attr_reader :cards, :high_cards
   def initialize(cards)
     @cards = cards
     @high_cards = []
@@ -11,7 +11,7 @@ class Deck
 
   def high_ranking_cards
     @cards.each do |card|
-        if card.rank >= 10
+        if card.rank >= 11
             @high_cards.push(card)
         end
     end
@@ -26,4 +26,16 @@ class Deck
     final_answer = closer_answer.round(2)
   end 
 
+ def remove_card(suit, value, rank) 
+    @cards.each do |card|
+      if card.suit == suit && card.value == value && card.rank == rank
+        @cards.delete(card)
+        @high_cards.delete(card)
+      end  
+    end
+  end 
+
+  def add_card(new_card)
+    @cards << new_card
+  end
 end
