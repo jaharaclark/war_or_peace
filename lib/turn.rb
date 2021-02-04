@@ -10,4 +10,8 @@ class Turn
     def type
         :basic
     end
+
+    def winner
+        @player1
+    end
 end

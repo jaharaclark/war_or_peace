@@ -19,7 +19,7 @@ class TurnTest < Minitest::Test
       @deck2 = Deck.new([@card3, @card4, @card6, @card7])    
       @player1 = Player.new("Megan", @deck1)    
       @player2 = Player.new("Aurora", @deck2)    
-      @turn = Turn.new(@player1, @player2)    
+      @turn = Turn.new(@player1, @player2)  
     end
 
     def test_it_exists_and_has_attributes
@@ -31,5 +31,9 @@ class TurnTest < Minitest::Test
 
   def test_it_has_a_type
       assert_equal :basic, @turn.type
+  end
+
+  def test_it_has_a_winner
+    assert_equal @player1, @turn.winner
   end
 end
