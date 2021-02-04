@@ -36,4 +36,8 @@ class TurnTest < Minitest::Test
   def test_it_has_a_winner
     assert_equal @player1, @turn.winner
   end
+
+  def test_it_has_a_pile_cards
+    
+  end  
 end

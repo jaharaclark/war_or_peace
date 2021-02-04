@@ -14,4 +14,8 @@ class Turn
     def winner
         @player1
     end
+
+    def pile_cards
+    
+    end
 end
