@@ -6,4 +6,8 @@ class Turn
         @player2 = player2
         @spoils_of_war = []
     end
+
+    def type
+        :basic
+    end
 end

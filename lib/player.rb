@@ -8,11 +8,6 @@ class Player
   end
 
   def has_lost?
-    # require 'pry'; binding.pry
-    if @deck.cards == []
-      return true
-    else
-      return false
-    end
+   deck.cards.empty?
   end
 end
