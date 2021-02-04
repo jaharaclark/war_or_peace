@@ -8,7 +8,13 @@ class Turn
     end
 
     def type
-        :basic
+        if @player1.deck.cards[0].rank == @player2.deck.cards[0].rank && @player1.deck.cards[2].rank == @player2.deck.cards[2].rank 
+            :mutually_assured_destruction
+        elsif @player1.deck.cards[0].rank != @player2.deck.cards[0].rank 
+            :basic
+        else
+            :war
+        end
     end
 
     def winner
@@ -18,4 +24,7 @@ class Turn
     def pile_cards
     
     end
+
+    def award_spoils(winner)
+    end    
 end
