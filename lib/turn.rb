@@ -21,6 +21,7 @@ class Turn
         if self.type == :basic
            @player1.deck.cards[0].rank > @player2.deck.cards[0].rank ? @player1 : @player2
         elsif self.type == :war
+            # require 'pry'; binding.pry
             @player1.deck.cards[2].rank > @player2.deck.cards[2].rank ? @player1 : @player2
         else
             "No Winner"
@@ -38,20 +39,27 @@ class Turn
            @player1.deck.cards.delete(player1_cards)
            @player2.deck.cards.delete(player2_cards)
         elsif self.type == :war
-           player1_cards = @player1.deck.cards[0..2]
-           player2_cards = @player2.deck.cards[0..2]
+           @spoils_of_war << @player1.deck.cards[0]
+           @spoils_of_war << @player1.deck.cards[1]
+           @spoils_of_war << @player1.deck.cards[2]
+           @spoils_of_war << @player2.deck.cards[0]
+           @spoils_of_war << @player2.deck.cards[1]
+           @spoils_of_war << @player2.deck.cards[2]
 
-           @spoils_of_war << player1_cards
-           @spoils_of_war << player2_cards
-
-           @player1.deck.cards.delete(player1_cards)
-           @player2.deck.cards.delete(player2_cards)
+           index = 0
+            until index > 2
+                @player1.deck.cards.shift
+                @player2.deck.cards.shift
+                index += 1
+            end    
         else
-           player1_cards = @player1.deck.cards[0..2]
-           player2_cards = @player2.deck.cards[0..2]
-
-           @player1.deck.cards.delete(player1_cards)
-           @player2.deck.cards.delete(player2_cards)
+            # require 'pry'; binding.pry
+        index = 0
+            until index > 2
+                @player1.deck.cards.shift
+                @player2.deck.cards.shift
+                index += 1
+            end
         end
     end
 
