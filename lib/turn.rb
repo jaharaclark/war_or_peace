@@ -7,14 +7,21 @@ class Turn
         @spoils_of_war = []
     end
 
-    def type
-        if @player1.deck.cards[0].rank == @player2.deck.cards[0].rank && @player1.deck.cards[2].rank == @player2.deck.cards[2].rank 
-            :mutually_assured_destruction
-        elsif @player1.deck.cards[0].rank != @player2.deck.cards[0].rank 
-            :basic
-        else
-            :war
-        end
+    def type 
+        # require 'pry'; binding.pry
+        if check_length?
+            if @player1.deck.cards[0].rank == @player2.deck.cards[0].rank && @player1.deck.cards[2].rank == @player2.deck.cards[2].rank 
+                :mutually_assured_destruction
+            elsif @player1.deck.cards[0].rank != @player2.deck.cards[0].rank 
+                :basic
+            else
+                :war
+            end
+        end 
+    end
+
+    def check_length?
+        @player1.deck.cards.length >=3 && @player2.deck.cards.length >= 3
     end
 
     def winner
@@ -22,8 +29,9 @@ class Turn
         if result == :basic
            @player1.deck.cards[0].rank > @player2.deck.cards[0].rank ? @player1 : @player2
         elsif result == :war
-            # require 'pry'; binding.pry
-            @player1.deck.cards[2].rank > @player2.deck.cards[2].rank ? @player1 : @player2
+            if check_length?
+              @player1.deck.cards[2].rank > @player2.deck.cards[2].rank ? @player1 : @player2
+            end
         else
             "No Winner"
         end

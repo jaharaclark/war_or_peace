@@ -75,6 +75,7 @@ class Game
     def play_game
         until winning_condition_met do
             turn = Turn.new(@player1, @player2)
+            turn.type
             turn.pile_cards
             turn.award_spoils(turn.winner) if turn.winner != "No Winner"
             display_winner(turn)
@@ -88,10 +89,10 @@ class Game
     end
 
     def someone_won
-      if player1.has_lost?
-        puts "*~*~*~* #{player2.name} has won the game! *~*~*~*"
-      elsif player2.has_lost?
-        puts "*~*~*~* #{player1.name} has won the game! *~*~*~*"
+      if @player1.has_lost?
+        puts "*~*~*~* #{@player2.name} has won the game! *~*~*~*"
+      elsif @player2.has_lost?
+        puts "*~*~*~* #{@player1.name} has won the game! *~*~*~*"
       else
         puts "---- DRAW ----"
         puts "You reached 1,000,000 turns! The game is over. Thanks for playing!"
