@@ -32,7 +32,7 @@ class DeckTest < Minitest::Test
     assert_equal [@card1, @card3], @deck.high_ranking_cards
     assert_equal 66.67, @deck.percent_high_ranking  
 
-    @deck.remove_card(:diamond, "Queen", 12)
+    @deck.remove_card
     @deck.percent_high_ranking
 
     assert_equal 50.00, @deck.percent_high_ranking
@@ -43,15 +43,13 @@ class DeckTest < Minitest::Test
   end
 
   def test_it_remove_card
-    @deck.high_ranking_cards
-    @deck.remove_card(:diamond, "Queen", 12)
+    @deck.remove_card
 
-    assert_equal [@card3], @deck.high_cards
     assert_equal [@card2, @card3], @deck.cards
   end
 
    def test_it_can_add_card
-    @deck.remove_card(:diamond, "Queen", 12)
+    @deck.remove_card
     @deck.add_card(@card4)
 
     assert_equal [@card2, @card3, @card4], @deck.cards

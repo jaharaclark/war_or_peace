@@ -32,14 +32,11 @@ class Turn
     def pile_cards
         result = type   
         if result == :basic 
-           player1_cards = @player1.deck.cards[0]
-           player2_cards = @player2.deck.cards[0]
-           
-           @spoils_of_war << player1_cards
-           @spoils_of_war << player2_cards
+           @spoils_of_war << @player1.deck.cards[0]
+           @spoils_of_war << @player2.deck.cards[0]
 
-           @player1.deck.cards.delete(player1_cards)
-           @player2.deck.cards.delete(player2_cards)
+           @player1.deck.remove_card
+           @player2.deck.remove_card
         elsif result == :war
            @spoils_of_war << @player1.deck.cards[0]
            @spoils_of_war << @player1.deck.cards[1]
@@ -50,15 +47,15 @@ class Turn
 
            index = 0
             until index > 2
-                @player1.deck.cards.shift
-                @player2.deck.cards.shift
+                @player1.deck.remove_card
+                @player2.deck.remove_card
                 index += 1
             end    
         else
         index = 0
             until index > 2
-                @player1.deck.cards.shift
-                @player2.deck.cards.shift
+                @player1.deck.remove_card
+                @player2.deck.remove_card
                 index += 1
             end
         end
@@ -66,7 +63,7 @@ class Turn
 
     def award_spoils(winner)
         @spoils_of_war.each do |spoil|
-            winner.deck.cards << spoil
+            winner.deck.add_card(spoil)
         end
         @spoils_of_war = []
     end    
