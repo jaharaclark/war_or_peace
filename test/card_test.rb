@@ -12,7 +12,6 @@ class CardTest < Minitest::Test
   end
 
   def test_it_has_readable_attributes
-    
     assert_equal :diamond, @card.suit
     assert_equal 'Queen', @card.value
     assert_equal 12, @card.rank

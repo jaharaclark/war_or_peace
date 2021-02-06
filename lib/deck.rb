@@ -1,12 +1,9 @@
 class Deck
+  
   attr_reader :cards 
   def initialize(cards)
     @cards = cards
   end
-
-  # def cards
-  #   @cards = cards
-  # end
 
   def rank_of_card_at(index)
     cards.at(index).rank
@@ -15,9 +12,9 @@ class Deck
   def high_ranking_cards
     high_cards = []
     cards.each do |card|
-        if card.rank >= 11
-            high_cards.push(card)
-        end
+      if card.rank >= 11
+        high_cards.push(card)
+      end
     end
     high_cards
   end
@@ -30,7 +27,7 @@ class Deck
     final_answer = closer_answer.round(2)
   end 
 
- def remove_card
+  def remove_card
     cards.shift
   end 
 
