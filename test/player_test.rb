@@ -24,18 +24,18 @@ class PlayerTest < Minitest::Test
       assert_equal false, @player.has_lost?
 
       @player.deck.remove_card(:diamond, "Queen", 12)
-      assert_equal 2, @player.deck.cards.length
+      assert_equal 2, @player.deck.length
       assert_equal false, @player.has_lost?
 
       @player.deck.remove_card(:spade, "3", 3)
-      assert_equal 1, @player.deck.cards.length
+      assert_equal 1, @player.deck.length
  
       assert_equal false, @player.has_lost?
 
       @player.deck.remove_card(:heart, "Ace", 14)
 
       assert_equal true, @player.has_lost?
-      assert_equal [], @player.deck.cards
+      assert_equal [], @player.deck
 
     end
 end

@@ -144,7 +144,6 @@ class TurnTest < Minitest::Test
       player2 = Player.new("Aurora", deck2)    
       turn = Turn.new(player1, player2)
     
-      
       assert_equal :war, turn.type
       assert_equal player2, turn.winner
       turn.pile_cards
