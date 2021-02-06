@@ -56,9 +56,8 @@ class Game
        
         if player1.has_lost == true || player2.has_lost == true
            someone_won
-        # elsif counter == 1,000,000 
-        #     the game is over
-        #     DRAW is printed to CLI
+        elsif counter == 1,000,000 
+            game_is_a_draw
         # else counter < 1,000,000
         #     fire the turn functions (i thin there are 4)    
         #     print "Turn #{counter number}" : "turn type" "who won" "what happened to the cards"
@@ -75,6 +74,11 @@ class Game
       puts "*~*~*~* #{winner} has won the game! *~*~*~*"
       puts "The game is over. Thanks for playing!"
     end
+
+    def game_is_a_draw
+      puts "---- DRAW ----"
+      puts "You reached 1,000,000 turns! The game is over. Thanks for playing!"
+    end    
 end
 
 
