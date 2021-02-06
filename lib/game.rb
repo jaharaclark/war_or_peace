@@ -52,13 +52,10 @@ class Game
     end   
 
     def play_game
-
-        # counter = 1
-        # counter += 1
-        # check is has lost true?
-        # if has lost == true
-        #     print the winner in the CLI, 
-        #     tell players the game is over
+        counter = 1
+       
+        if player1.has_lost == true || player2.has_lost == true
+           someone_won
         # elsif counter == 1,000,000 
         #     the game is over
         #     DRAW is printed to CLI
@@ -67,6 +64,16 @@ class Game
         #     print "Turn #{counter number}" : "turn type" "who won" "what happened to the cards"
         #      counter += 1
         # end    
+    end
+
+    def someone_won
+      if player1.has_lost == false
+        winner = player1.name
+      else 
+        winner  = player2.name
+      end
+      puts "*~*~*~* #{winner} has won the game! *~*~*~*"
+      puts "The game is over. Thanks for playing!"
     end
 end
 
