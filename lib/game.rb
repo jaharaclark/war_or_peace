@@ -6,10 +6,10 @@ require './lib/game.rb'
 require './lib/card_generator.rb'
 
 class Game
-    attr_reader :cards, :turn, :counter
+attr_reader :cards, :turn, :counter
 
-    def initialize(file_name)
-        @cards = CardGenerator.new(file_name).create_card
+def initialize(file_name)
+@cards = CardGenerator.new(file_name).create_card
         shuffled_cards = @cards.shuffle
         cards1 = shuffled_cards.first(26)
         cards2 = shuffled_cards.last(26)
