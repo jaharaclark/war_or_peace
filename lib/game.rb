@@ -57,8 +57,11 @@ class Game
         if player1.has_lost == true || player2.has_lost == true
            someone_won
         elsif counter == 1,000,000 
-            game_is_a_draw
-        # else counter < 1,000,000
+          game_is_a_draw
+        else
+          turn.winner
+          turn.pile_cards
+            # fire turn.award_spoils(winner)
         #     fire the turn functions (i thin there are 4)    
         #     print "Turn #{counter number}" : "turn type" "who won" "what happened to the cards"
         #      counter += 1
