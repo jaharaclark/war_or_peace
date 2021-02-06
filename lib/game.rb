@@ -22,7 +22,9 @@ class Game
     def greet
         puts "Welcome to War! (or Peace) This game will be played with 52 cards. \n" +
         "The players today are Megan and Aurora. \n" +
-        "Type 'GO' to start the game!"
+        "Type 'GO' to start the game! \n" +
+        "------------------------------------------------------------------"
+        start_command = gets.chomp
     end 
 
     def start

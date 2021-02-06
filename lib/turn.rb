@@ -53,7 +53,6 @@ class Turn
                 index += 1
             end    
         else
-            # require 'pry'; binding.pry
         index = 0
             until index > 2
                 @player1.deck.cards.shift
