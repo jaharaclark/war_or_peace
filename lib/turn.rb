@@ -18,9 +18,10 @@ class Turn
     end
 
     def winner
-        if self.type == :basic
+        result = type
+        if result == :basic
            @player1.deck.cards[0].rank > @player2.deck.cards[0].rank ? @player1 : @player2
-        elsif self.type == :war
+        elsif result == :war
             # require 'pry'; binding.pry
             @player1.deck.cards[2].rank > @player2.deck.cards[2].rank ? @player1 : @player2
         else
@@ -29,7 +30,8 @@ class Turn
     end
 
     def pile_cards
-        if self.type == :basic 
+        result = type   
+        if result == :basic 
            player1_cards = @player1.deck.cards[0]
            player2_cards = @player2.deck.cards[0]
            
@@ -38,7 +40,7 @@ class Turn
 
            @player1.deck.cards.delete(player1_cards)
            @player2.deck.cards.delete(player2_cards)
-        elsif self.type == :war
+        elsif result == :war
            @spoils_of_war << @player1.deck.cards[0]
            @spoils_of_war << @player1.deck.cards[1]
            @spoils_of_war << @player1.deck.cards[2]
