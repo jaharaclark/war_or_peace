@@ -53,19 +53,17 @@ class Game
 
     def play_game
         counter = 1
-       
         if player1.has_lost == true || player2.has_lost == true
            someone_won
         elsif counter == 1,000,000 
           game_is_a_draw
         else
-          turn.winner
+          winner = turn.winner
           turn.pile_cards
-            # fire turn.award_spoils(winner)
-        #     fire the turn functions (i thin there are 4)    
-        #     print "Turn #{counter number}" : "turn type" "who won" "what happened to the cards"
-        #      counter += 1
-        # end    
+          turn.award_spoils(winner)
+          display_winner(winner)
+          counter += 1
+        end    
     end
 
     def someone_won
@@ -82,15 +80,16 @@ class Game
       puts "---- DRAW ----"
       puts "You reached 1,000,000 turns! The game is over. Thanks for playing!"
     end    
+
+    def display_winner
+        if turn.type == :mutually_assured_destruction
+            puts "Turn #{counter}: *mutually assured destruction* 6 cards removed from play."
+        elsif turn.type == :war
+            puts "Turn #{counter}: WAR - #{winner} won 6 cards."
+        else
+            puts "Turn #{counter}: #{winner} won 2 cards."
+        end
+    end
 end
 
 
-
-# Turn 1: Megan won 2 cards
-# Turn 2: WAR - Aurora won 6 cards
-# Turn 3: *mutually assured destruction* 6 cards removed from play
-# ...
-# ...
-# ...
-# Turn 9324: Aurora won 2 cards
-# *~*~*~* Aurora has won the game! *~*~*~*
